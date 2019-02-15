@@ -1,0 +1,16 @@
+<ul class="media-list">
+  {{#each list as |post|}}
+    <li class="media ">
+      <div class="media-left">
+        <span class="badge"><span class="glyphicon glyphicon-th"/></span>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{post.title}}</h4>
+        {{post.body}}
+        {{delete-record record=post}}
+        {{edit-post record=post}}
+      </div>
+    </li>
+    <br>
+  {{/each}}
+</ul>

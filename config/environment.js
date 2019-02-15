@@ -18,12 +18,12 @@ module.exports = function(environment) {
     },
 
     firebase: {
-      apiKey: "<YOUR API KEY>",
-      authDomain: "<DOMAIN>.firebaseapp.com",
-      databaseURL: "https://<DBNAME>.firebaseio.com",
-      projectId: "<DBNAME>",
-      storageBucket: "<DBNAME>.appspot.com",
-      messagingSenderId: "<ID>"
+      apiKey: "AIzaSyBnRNkmu9tYkzvmOVWRpKGkPa7d-bE_eSk",
+      authDomain: "s1g1-blog-db.firebaseapp.com",
+      databaseURL: "https://s1g1-blog-db.firebaseio.com",
+      projectId: "s1g1-blog-db",
+      storageBucket: "s1g1-blog-db.appspot.com",
+      messagingSenderId: "477272178234"
     },
 
 

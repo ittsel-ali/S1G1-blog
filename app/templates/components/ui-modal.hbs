@@ -1,31 +1,30 @@
-<button class="ui blue button" {{action "openModel"}} data-toggle="modal" data-target="#exampleModal">
-  Add new {{id}}
-</button>
-
 {{#bs-modal open=modal3 onSubmit=(action "submit") onHidden=(action (mut modal3) false) as |modal|}}
   {{#modal.header}}
     <h4 class="modal-title">
-      Edit
-      <div class="badge">2</div>
+      {{method}} {{model}} "{{fields.title}}"
     </h4>
   {{/modal.header}}
   {{#modal.body}}
     <div class="content">
       <div class="ui form">
-        {{#each this.fields as |field|}}
-          <div class="field">
-            <label>{{id}} {{field}}</label>
-            {{input type="text" class="col-md-12" cols="50" rows="1" placeholder="add title" autofocus="autofocus" value=(mut (get attributes field))}}
+        {{#each-in fields as |field|}}
+          <div class="form-group has-primary has-feedback">
+            <div class="input-group">
+              <span class="input-group-addon">{{field}}</span>
+              {{input type="text" class="form-control" cols="50" rows="1" placeholder=(concat "add " field) autofocus="autofocus" value=(mut (get fields field))}}
+            </div>
           </div>
-        {{/each}}
+        {{/each-in}}
       </div>
     </div>
   {{/modal.body}}
   {{#modal.footer}}
     {{#bs-button onClick=(action modal.close)}}Cancel{{/bs-button}}
-    {{#bs-button type="success" icon="glyphicon glyphicon-download" onClick=(action modal.submit)}}Save<i class="glyphicon glyphicon-alert"></i><span class="glyphicon glyphicon-ok"/>{{/bs-button}}
+    {{#bs-button type="btn btn-success" onClick=(action modal.submit)}}Save <span class="glyphicon glyphicon-ok"/>{{/bs-button}}
   {{/modal.footer}}
 {{/bs-modal}}
-{{#bs-button type="primary" onClick=(action (mut modal3) true)}}Add new {{id}}{{/bs-button}}
-
-{{computedProperty}}
+{{#if (eq model "edit")}}
+  <button class="badge badge-success badge-circle pull-right" onClick={{action (mut modal3) true}}><span class="glyphicon glyphicon-pencil"/></button>
+{{else}}
+  {{#bs-button type="primary" onClick=(action (mut modal3) true)}}Add new {{model}}{{/bs-button}}
+{{/if}}
